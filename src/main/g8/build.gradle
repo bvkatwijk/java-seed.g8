@@ -39,9 +39,9 @@ dependencies {
     compileOnly "org.projectlombok:lombok:\$lombokVersion"
 
     //testCompile
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "\$junitVersion"
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "\$junitVersion"
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '\$mockitoVersion'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "\$junitVersion"
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "\$junitVersion"
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: "\$mockitoVersion"
 
     testAnnotationProcessor "org.projectlombok:lombok:\$lombokVersion"
     testCompileOnly "org.projectlombok:lombok:\$lombokVersion"
