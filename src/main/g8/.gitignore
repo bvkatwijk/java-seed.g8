@@ -11,14 +11,9 @@ target/
 .idea
 *.iml
 
-# SBT
-project/project
-.sbt
-.ivy2
-boot/
-lib_managed/
-src_managed/
-.bsp/sbt.json
+# Build files
+.gradle/
+build/
 
 # OS files
 .DS_Store
