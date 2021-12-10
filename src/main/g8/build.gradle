@@ -1,0 +1,93 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+}
+
+plugins {
+	id 'java'
+	id 'jacoco'
+	id 'net.ltgt.apt' version '0.10'
+	id 'idea'
+}
+
+sourceCompatibility = 1.17
+targetCompatibility = 1.17
+
+group '$package$'
+description '$description$'
+version '0.0.1'
+
+configurations {
+	testCompile.extendsFrom compileOnly
+}
+
+// Local variables for this build file
+ext {
+	lombokVersion = '1.18.22'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//compileOnly
+	//lombok - live boilerplate code generator
+	annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+	compileOnly "org.projectlombok:lombok:$lombokVersion"
+
+	//compile
+	//logging frameworks
+	compile(group: 'org.slf4j', name: 'slf4j-api', version: '1.7.31')
+	// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
+	compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.31'
+
+	// JSON conversion
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.5'
+
+	//testCompile
+	testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "5.${junit5MinorVersion}"
+	testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "5.${junit5MinorVersion}"
+	testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: "1.${junit5MinorVersion}"
+	testCompile group: 'org.mockito', name: 'mockito-core', version: '3.11.2'
+
+	testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+	testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+}
+
+test {
+	testLogging {
+		exceptionFormat = 'full'
+		//showStandardStreams true
+		events "skipped", "failed"
+		afterSuite { desc, result ->
+			if (!desc.parent) {
+				println "Result: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+			}
+		}
+	}
+}
+
+// Generate coverage report after testing
+test.finalizedBy jacocoTestReport
+
+idea {
+	project {
+		jdkName = '1.17'
+		languageLevel = '1.17'
+		vcs = 'Git'
+	}
+}
+
+allprojects {
+	tasks.withType(JavaForkOptions) {
+		// Forked processes like GradleWorkerMain for tests won't steal focus!
+		jvmArgs '-Djava.awt.headless=true'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
