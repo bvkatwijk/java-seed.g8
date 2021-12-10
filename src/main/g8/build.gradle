@@ -11,8 +11,8 @@ plugins {
 	id 'idea'
 }
 
-sourceCompatibility = 1.17
-targetCompatibility = 1.17
+sourceCompatibility = 1.$java_version$
+targetCompatibility = 1.$java_version$
 
 group '$package$'
 description '$description$'
@@ -24,7 +24,9 @@ configurations {
 
 // Local variables for this build file
 ext {
-	lombokVersion = '1.18.22'
+	mockito_version = '$mockito_version$'
+	junit_version = '$junit_version$'
+	lombokVersion = '$lombok_version$'
 }
 
 repositories {
@@ -34,27 +36,16 @@ repositories {
 dependencies {
 	//compileOnly
 	//lombok - live boilerplate code generator
-	annotationProcessor "org.projectlombok:lombok:$lombokVersion"
-	compileOnly "org.projectlombok:lombok:$lombokVersion"
-
-	//compile
-	//logging frameworks
-	compile(group: 'org.slf4j', name: 'slf4j-api', version: '1.7.31')
-	// https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
-	compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.31'
-
-	// JSON conversion
-	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.5'
+	annotationProcessor "org.projectlombok:lombok:\$lombokVersion"
+	compileOnly "org.projectlombok:lombok:\$lombokVersion"
 
 	//testCompile
-	testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "5.${junit5MinorVersion}"
-	testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "5.${junit5MinorVersion}"
-	testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: "1.${junit5MinorVersion}"
-	testCompile group: 'org.mockito', name: 'mockito-core', version: '3.11.2'
+	testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "\$junit_version"
+	testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "\$junit_version"
+	testCompile group: 'org.mockito', name: 'mockito-core', version: '\$mockito_version'
 
-	testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
-	testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+	testAnnotationProcessor "org.projectlombok:lombok:\$lombokVersion"
+	testCompileOnly "org.projectlombok:lombok:\$lombokVersion"
 }
 
 test {
@@ -64,7 +55,7 @@ test {
 		events "skipped", "failed"
 		afterSuite { desc, result ->
 			if (!desc.parent) {
-				println "Result: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+				println "Result: \${result.resultType} (\${result.testCount} tests, \${result.successfulTestCount} successes, \${result.failedTestCount} failures, \${result.skippedTestCount} skipped)"
 			}
 		}
 	}
@@ -75,8 +66,8 @@ test.finalizedBy jacocoTestReport
 
 idea {
 	project {
-		jdkName = '1.17'
-		languageLevel = '1.17'
+		jdkName = '1.$java_version$'
+		languageLevel = '1.$java_version$'
 		vcs = 'Git'
 	}
 }
