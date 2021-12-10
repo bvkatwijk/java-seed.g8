@@ -1,84 +1,84 @@
 buildscript {
-	repositories {
-		mavenCentral()
-	}
+    repositories {
+        mavenCentral()
+    }
 }
 
 plugins {
-	id 'java'
-	id 'jacoco'
-	id 'net.ltgt.apt' version '0.10'
-	id 'idea'
+    id 'java'
+    id 'jacoco'
+    id 'net.ltgt.apt' version '0.10'
+    id 'idea'
 }
 
 sourceCompatibility = 1.$java_version$
 targetCompatibility = 1.$java_version$
 
 group '$package$'
-description '$description$'
+description '$project_description$'
 version '0.0.1'
 
 configurations {
-	testCompile.extendsFrom compileOnly
+    testCompile.extendsFrom compileOnly
 }
 
 // Local variables for this build file
 ext {
-	mockito_version = '$mockito_version$'
-	junit_version = '$junit_version$'
-	lombokVersion = '$lombok_version$'
+    mockitoVersion = '$mockito_version$'
+    junitVersion = '$junit_version$'
+    lombokVersion = '$lombok_version$'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	//compileOnly
-	//lombok - live boilerplate code generator
-	annotationProcessor "org.projectlombok:lombok:\$lombokVersion"
-	compileOnly "org.projectlombok:lombok:\$lombokVersion"
+    //compileOnly
+    //lombok - live boilerplate code generator
+    annotationProcessor "org.projectlombok:lombok:\$lombokVersion"
+    compileOnly "org.projectlombok:lombok:\$lombokVersion"
 
-	//testCompile
-	testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "\$junit_version"
-	testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "\$junit_version"
-	testCompile group: 'org.mockito', name: 'mockito-core', version: '\$mockito_version'
+    //testCompile
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "\$junitVersion"
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "\$junitVersion"
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '\$mockitoVersion'
 
-	testAnnotationProcessor "org.projectlombok:lombok:\$lombokVersion"
-	testCompileOnly "org.projectlombok:lombok:\$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:\$lombokVersion"
+    testCompileOnly "org.projectlombok:lombok:\$lombokVersion"
 }
 
 test {
-	testLogging {
-		exceptionFormat = 'full'
-		//showStandardStreams true
-		events "skipped", "failed"
-		afterSuite { desc, result ->
-			if (!desc.parent) {
-				println "Result: \${result.resultType} (\${result.testCount} tests, \${result.successfulTestCount} successes, \${result.failedTestCount} failures, \${result.skippedTestCount} skipped)"
-			}
-		}
-	}
+    testLogging {
+        exceptionFormat = 'full'
+        //showStandardStreams true
+        events "skipped", "failed"
+        afterSuite { desc, result ->
+            if (!desc.parent) {
+                println "Result: \${result.resultType} (\${result.testCount} tests, \${result.successfulTestCount} successes, \${result.failedTestCount} failures, \${result.skippedTestCount} skipped)"
+            }
+        }
+    }
 }
 
 // Generate coverage report after testing
 test.finalizedBy jacocoTestReport
 
 idea {
-	project {
-		jdkName = '1.$java_version$'
-		languageLevel = '1.$java_version$'
-		vcs = 'Git'
-	}
+    project {
+        jdkName = '1.$java_version$'
+        languageLevel = '1.$java_version$'
+        vcs = 'Git'
+    }
 }
 
 allprojects {
-	tasks.withType(JavaForkOptions) {
-		// Forked processes like GradleWorkerMain for tests won't steal focus!
-		jvmArgs '-Djava.awt.headless=true'
-	}
+    tasks.withType(JavaForkOptions) {
+        // Forked processes like GradleWorkerMain for tests won't steal focus!
+        jvmArgs '-Djava.awt.headless=true'
+    }
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
