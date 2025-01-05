@@ -7,7 +7,7 @@ buildscript {
 plugins {
     id 'java'
     id 'jacoco'
-    id 'idea'
+    id 'com.adarshr.test-logger' version '4.0.0'
 }
 
 sourceCompatibility = $java_version$
@@ -37,27 +37,48 @@ dependencies {
     testImplementation libs.junit.jupiter.api
 }
 
-test {
-    testLogging {
-        exceptionFormat = 'full'
-        //showStandardStreams true
-        events "skipped", "failed"
-        afterSuite { desc, result ->
-            if (!desc.parent) {
-                println "Result: \${result.resultType} (\${result.testCount} tests, \${result.successfulTestCount} successes, \${result.failedTestCount} failures, \${result.skippedTestCount} skipped)"
-            }
-        }
+java {
+    withJavadocJar()
+    withSourcesJar()
+    toolchain {
+        languageVersion = JavaLanguageVersion.of($java_version$)
     }
 }
 
-test.finalizedBy jacocoTestReport
-
-allprojects {
-    tasks.withType(JavaForkOptions) {
-        jvmArgs '-Djava.awt.headless=true'
-    }
-}
-
-test {
+tasks.named('test') {
     useJUnitPlatform()
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = false
+    }
+}
+
+testlogger {
+    slowThreshold 500
+}
+
+clean { delete += "tmp" }
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
+signing {
+    sign publishing.publications
+}
+
+tasks.withType(Sign) {
+    onlyIf { isReleaseVersion }
+}
+
+tasks.withType(Zip) { task ->
+    task.doLast {
+        ant.checksum file: it.archivePath
+    }
 }
