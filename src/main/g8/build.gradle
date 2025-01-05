@@ -21,13 +21,6 @@ configurations {
     testCompile.extendsFrom compileOnly
 }
 
-// Local variables for this build file
-ext {
-    junitVersion = '$junit_version$'
-    lombokVersion = '$lombok_version$'
-    vavrVersion = '$vavr_version$'
-}
-
 repositories {
     mavenCentral()
 }
