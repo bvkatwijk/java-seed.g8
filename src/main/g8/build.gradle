@@ -69,14 +69,6 @@ clean { delete += "tmp" }
 
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
-signing {
-    sign publishing.publications
-}
-
-tasks.withType(Sign) {
-    onlyIf { isReleaseVersion }
-}
-
 tasks.withType(Zip) { task ->
     task.doLast {
         ant.checksum file: it.archivePath
