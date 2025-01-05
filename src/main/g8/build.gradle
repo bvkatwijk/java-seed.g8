@@ -10,8 +10,8 @@ plugins {
     id 'idea'
 }
 
-sourceCompatibility = 1.$java_version$
-targetCompatibility = 1.$java_version$
+sourceCompatibility = $java_version$
+targetCompatibility = $java_version$
 
 group '$package$'
 description '$project_description$'
