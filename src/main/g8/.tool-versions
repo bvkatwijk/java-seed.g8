@@ -1,2 +1,2 @@
 java openjdk-\$java-version\$
-gradle \gradle-version\$
+gradle \$gradle-version\$
