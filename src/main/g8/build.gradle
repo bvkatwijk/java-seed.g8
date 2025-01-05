@@ -32,17 +32,15 @@ repositories {
 }
 
 dependencies {
-    //compileOnly
-    //lombok - live boilerplate code generator
-    annotationProcessor "org.projectlombok:lombok:\$lombokVersion"
-    compileOnly "org.projectlombok:lombok:\$lombokVersion"
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
 
-    //testCompile
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "\$junitVersion"
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "\$junitVersion"
+    implementation libs.vavr
 
-    testAnnotationProcessor "org.projectlombok:lombok:\$lombokVersion"
-    testCompileOnly "org.projectlombok:lombok:\$lombokVersion"
+    testImplementation libs.junit.jupiter
+    testImplementation libs.junit.jupiter.api
 }
 
 test {

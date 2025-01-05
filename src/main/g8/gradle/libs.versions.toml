@@ -1,0 +1,10 @@
+[versions]
+junit-jupiter = "junitVersion"
+lombok = "$lombokVersion"
+vavr = "$vavrVersion"
+
+[libraries]
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+vavr = { module = "io.vavr:vavr", version.ref = "vavr" }
