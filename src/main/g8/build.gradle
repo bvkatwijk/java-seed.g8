@@ -25,6 +25,7 @@ configurations {
 ext {
     junitVersion = '$junit_version$'
     lombokVersion = '$lombok_version$'
+    vavrVersion = '$vavr_version$'
 }
 
 repositories {
