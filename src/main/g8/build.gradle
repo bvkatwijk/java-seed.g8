@@ -52,14 +52,6 @@ test {
 
 test.finalizedBy jacocoTestReport
 
-idea {
-    project {
-        jdkName = '1.$java_version$'
-        languageLevel = '1.$java_version$'
-        vcs = 'Git'
-    }
-}
-
 allprojects {
     tasks.withType(JavaForkOptions) {
         jvmArgs '-Djava.awt.headless=true'
