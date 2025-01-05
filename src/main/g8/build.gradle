@@ -56,7 +56,6 @@ test {
     }
 }
 
-// Generate coverage report after testing
 test.finalizedBy jacocoTestReport
 
 idea {
@@ -69,7 +68,6 @@ idea {
 
 allprojects {
     tasks.withType(JavaForkOptions) {
-        // Forked processes like GradleWorkerMain for tests won't steal focus!
         jvmArgs '-Djava.awt.headless=true'
     }
 }
