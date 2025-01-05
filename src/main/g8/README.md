@@ -5,10 +5,10 @@
 
 ## Build
 ```shell-script
-./gradlew compile
+gradle compile
 ```
 
 ## Test
 ```shell-script
-./gradlew test
+gradle test
 ```
