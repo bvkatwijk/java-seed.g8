@@ -15,7 +15,7 @@ targetCompatibility = 1.$java_version$
 
 group '$package$'
 description '$project_description$'
-version '0.0.1'
+version '0.1.0'
 
 configurations {
     testCompile.extendsFrom compileOnly
