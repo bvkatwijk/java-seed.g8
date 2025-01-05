@@ -23,7 +23,6 @@ configurations {
 
 // Local variables for this build file
 ext {
-    mockitoVersion = '$mockito_version$'
     junitVersion = '$junit_version$'
     lombokVersion = '$lombok_version$'
 }
@@ -41,7 +40,6 @@ dependencies {
     //testCompile
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "\$junitVersion"
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "\$junitVersion"
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: "\$mockitoVersion"
 
     testAnnotationProcessor "org.projectlombok:lombok:\$lombokVersion"
     testCompileOnly "org.projectlombok:lombok:\$lombokVersion"
