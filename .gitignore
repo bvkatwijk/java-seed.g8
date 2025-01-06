@@ -29,3 +29,4 @@ src_managed/
 project/plugins/project/
 .idea/
 localtest/
+.bsp/
