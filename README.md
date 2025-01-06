@@ -8,15 +8,16 @@ sbt new bvkatwijk/java-seed.g8
 
 ## Included
 * Libraries
-  * Lombok (latest)
-  * Vavr (latest)
-  * Junit (latest)
+  * [Lombok](https://projectlombok.org/) (automatic latest)
+  * [Vavr](https://vavr.io/) (automatic latest)
+  * [Junit](https://junit.org/) (automatic latest)
 * Formatting with [.editorconfig](https://editorconfig.org)
 * Code coverage with [JaCoCo](https://www.eclemma.org/jacoco/) and [Codecov](https://codecov.io/)
 * Build with [Gradle](https://gradle.org)
 * CI setup with [GitHub Actions](https://github.com/features/actions)
 * Development with [Docker](https://www.docker.com/)
 * Automation with [GitHub Actions](https://github.com/features/actions)
+* Tool Version Management with [Asdf](https://asdf-vm.com/)
 
 
 Template license
