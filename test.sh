@@ -1,14 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-rm -rf ./localtest
-
-sbt new file://../java-seed.g8 -- \
-  --username=local \
-  --name=localtest
-
-pushd localtest
-  asdf install
+pushd ./target/g8
   gradle wrapper
   ./gradlew test
 popd
