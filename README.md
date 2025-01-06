@@ -1,4 +1,7 @@
 # java-seed
+
+[![CI](https://github.com/bvkatwijk/java-seed.g8/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/bvkatwijk/java-seed.g8/actions)
+
 A Giter8 template for my Java projects
 
 ## Usage
