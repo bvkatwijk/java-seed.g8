@@ -1,6 +1,6 @@
 # $name$ - $project_description$
 
-[![Build Status](https://travis-ci.org/$username$/$name$.svg?branch=master)](https://travis-ci.org/$username$/$name$)
+[![CI](https://github.com/$username$/$name$/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/$username$/$name$/actions/)
 [![codecov](https://codecov.io/gh/$username$/$name$/branch/master/graph/badge.svg)](https://codecov.io/gh/$username$/$name$)
 
 ## Build
