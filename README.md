@@ -8,9 +8,9 @@ sbt new bvkatwijk/java-seed.g8
 
 ## Included
 * Libraries
-  * Lombok
-  * Vavr
-* Testing with [JUnit Jupiter](https://junit.org/)
+  * Lombok (latest)
+  * Vavr (latest)
+  * Junit (latest)
 * Formatting with [.editorconfig](https://editorconfig.org)
 * Code coverage with [JaCoCo](https://www.eclemma.org/jacoco/) and [Codecov](https://codecov.io/)
 * Build with [Gradle](https://gradle.org)
