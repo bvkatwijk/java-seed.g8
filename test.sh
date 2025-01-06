@@ -9,5 +9,6 @@ sbt new file://../java-seed.g8 -- \
 
 pushd localtest
   asdf install
-  gradle test
+  gradle wrapper
+  ./gradlew test
 popd
