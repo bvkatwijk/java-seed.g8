@@ -8,7 +8,6 @@ lazy val root = (project in file("."))
   .settings(
     name := "java-seed",
     Test / test := {
-      val _ = (Test / g8Test).toTask("").value
       val scriptPath = "./test.sh"
       streams.value.log.info(s"Running script: $scriptPath")
       val result = Process(scriptPath).!
