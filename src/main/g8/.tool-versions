@@ -1,0 +1,2 @@
+java openjdk-$java_version$
+gradle $gradle_version$

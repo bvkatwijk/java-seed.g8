@@ -7,25 +7,18 @@ buildscript {
 plugins {
     id 'java'
     id 'jacoco'
-    id 'idea'
+    id 'com.adarshr.test-logger' version '4.0.0'
 }
 
-sourceCompatibility = 1.$java_version$
-targetCompatibility = 1.$java_version$
+sourceCompatibility = $java_version$
+targetCompatibility = $java_version$
 
 group '$package$'
 description '$project_description$'
-version '0.0.1'
+version '0.1.0'
 
 configurations {
     testCompile.extendsFrom compileOnly
-}
-
-// Local variables for this build file
-ext {
-    mockitoVersion = '$mockito_version$'
-    junitVersion = '$junit_version$'
-    lombokVersion = '$lombok_version$'
 }
 
 repositories {
@@ -33,51 +26,51 @@ repositories {
 }
 
 dependencies {
-    //compileOnly
-    //lombok - live boilerplate code generator
-    annotationProcessor "org.projectlombok:lombok:\$lombokVersion"
-    compileOnly "org.projectlombok:lombok:\$lombokVersion"
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
 
-    //testCompile
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "\$junitVersion"
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: "\$junitVersion"
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: "\$mockitoVersion"
+    implementation libs.vavr
 
-    testAnnotationProcessor "org.projectlombok:lombok:\$lombokVersion"
-    testCompileOnly "org.projectlombok:lombok:\$lombokVersion"
+    testImplementation libs.junit.jupiter
+    testImplementation libs.junit.jupiter.api
 }
 
-test {
-    testLogging {
-        exceptionFormat = 'full'
-        //showStandardStreams true
-        events "skipped", "failed"
-        afterSuite { desc, result ->
-            if (!desc.parent) {
-                println "Result: \${result.resultType} (\${result.testCount} tests, \${result.successfulTestCount} successes, \${result.failedTestCount} failures, \${result.skippedTestCount} skipped)"
-            }
-        }
+java {
+    withJavadocJar()
+    withSourcesJar()
+    toolchain {
+        languageVersion = JavaLanguageVersion.of($java_version$)
     }
 }
 
-// Generate coverage report after testing
-test.finalizedBy jacocoTestReport
-
-idea {
-    project {
-        jdkName = '1.$java_version$'
-        languageLevel = '1.$java_version$'
-        vcs = 'Git'
-    }
-}
-
-allprojects {
-    tasks.withType(JavaForkOptions) {
-        // Forked processes like GradleWorkerMain for tests won't steal focus!
-        jvmArgs '-Djava.awt.headless=true'
-    }
-}
-
-test {
+tasks.named('test') {
     useJUnitPlatform()
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = false
+    }
+}
+
+testlogger {
+    slowThreshold 500
+}
+
+clean { delete += "tmp" }
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
+tasks.withType(Zip) { task ->
+    task.doLast {
+        ant.checksum file: it.archivePath
+    }
 }
