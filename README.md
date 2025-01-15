@@ -2,7 +2,8 @@
 
 [![CI](https://github.com/bvkatwijk/java-seed.g8/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/bvkatwijk/java-seed.g8/actions)
 
-A Giter8 template for my Java projects
+A Giter8 template for my Java projects.
+Automatically sets up multi-module gradle project with a server and a library.
 
 ## Usage
 ```
@@ -35,7 +36,3 @@ clean g8 test
 Template license
 ----------------
 Written in 2021 by Boris van Katwijk bvkatwijk@gmail.com
-
-To the extent possible under law, the author(s) have dedicated all copyright and related
-and neighboring rights to this template to the public domain worldwide.
-This template is distributed without any warranty. See <http://creativecommons.org/publicdomain/zero/1.0/>.

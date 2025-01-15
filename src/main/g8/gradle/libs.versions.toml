@@ -4,6 +4,13 @@ javalin = "$javalin_version$"
 junit-jupiter = "$junit_version$"
 lombok = "$lombok_version$"
 vavr = "$vavr_version$"
+htmx = "$htmx_version$"
+bootstrap = "$bootstrap_version$"
+bootstrap-icons = "$bootstrap-icons_version$"
+logback-classic = "$logback-classic_version$"
+slf4j-reload4j = "$slf4j-reload4j_version$"
+assertj-core = "$assertj-core_version$"
+java-lens = "$java-lens_version$"
 
 [libraries]
 javalin = { module = "io.javalin:javalin-bundle", version.ref = "javalin" }
