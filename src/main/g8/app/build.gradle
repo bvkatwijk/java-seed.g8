@@ -52,12 +52,12 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(23)
+        languageVersion = JavaLanguageVersion.of($java_version$)
     }
 }
 
 application {
-    mainClass = 'nl.bvkatwijk.shrine.App'
+    mainClass = '$package$.App'
 }
 
 tasks.named('test') {
