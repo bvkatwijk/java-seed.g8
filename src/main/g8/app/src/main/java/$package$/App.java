@@ -1,6 +1,7 @@
 package $package$;
 
 import io.javalin.Javalin;
+import $package$.SomeClass;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 
@@ -18,7 +19,7 @@ public class App {
             config.staticFiles.add("/public");
         });
 
-        app.get("/", ctx -> ctx.html("Hello world!"));
+        app.get("/", ctx -> ctx.html(new SomeClass().someMethod()));
 
         return app
             .before(it -> MDC.put("time", "" + System.nanoTime()))
