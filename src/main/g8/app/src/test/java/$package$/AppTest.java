@@ -13,7 +13,7 @@ class SomeClassTest {
             assertThat(response.code())
                 .isEqualTo(200);
             assertThat(response.body().string())
-                .contains("Hello, world!");
+                .contains("Hello world!");
         });
 	}
 }
