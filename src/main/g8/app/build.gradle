@@ -30,7 +30,7 @@ dependencies {
     runtimeOnly group: 'org.webjars.npm', name: 'htmx.org', version: '$htmx_version$'
     runtimeOnly group: 'org.webjars.npm', name: 'bootstrap', version: '$bootstrap_version$'
     runtimeOnly group: 'org.webjars.npm', name: 'bootstrap-icons', version: '$bootstrap-icons_version$'
-    implementation group: 'org.json', name: 'json', version: '20240303'
+    implementation group: 'org.json', name: 'json', version: '$json_version$'
     implementation libs.vavr
 
     compileOnly libs.lombok
