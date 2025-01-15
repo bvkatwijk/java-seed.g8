@@ -32,6 +32,7 @@ dependencies {
 
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.12'
     testImplementation group: 'org.slf4j', name: 'slf4j-reload4j', version: '2.0.16'
+    testImplementation("org.assertj:assertj-core:3.26.3")
 
     implementation 'nl.bvkatwijk:java-lens:0.3.0'
     annotationProcessor 'nl.bvkatwijk:java-lens:0.3.0'

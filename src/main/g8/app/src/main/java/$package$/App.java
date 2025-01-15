@@ -12,7 +12,7 @@ public class App {
         log.info("[Done ] Creating server");
     }
 
-    public Javalin createServer() {
+    public static Javalin createServer() {
         var app = Javalin.create(config -> {
             config.staticFiles.enableWebjars();
             config.staticFiles.add("/public");
