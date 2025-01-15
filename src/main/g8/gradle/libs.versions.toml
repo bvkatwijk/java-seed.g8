@@ -1,9 +1,13 @@
 [versions]
+j2html = "$j2html_version$"
+javalin = "$javalin_version$"
 junit-jupiter = "$junit_version$"
 lombok = "$lombok_version$"
 vavr = "$vavr_version$"
 
 [libraries]
+javalin = { module = "io.javalin:javalin-bundle", version.ref = "javalin" }
+j2html = { module = "com.j2html:j2html", version.ref = "j2html" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }

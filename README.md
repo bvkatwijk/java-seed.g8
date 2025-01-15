@@ -10,6 +10,9 @@ sbt new bvkatwijk/java-seed.g8
 ```
 
 ## Included
+* Multi-module project
+  * Lib
+  * App
 * Libraries
   * [Lombok](https://projectlombok.org/) (automatic latest)
   * [Vavr](https://vavr.io/) (automatic latest)
@@ -22,6 +25,12 @@ sbt new bvkatwijk/java-seed.g8
 * Automation with [GitHub Actions](https://github.com/features/actions)
 * Tool Version Management with [Asdf](https://asdf-vm.com/)
 
+## Development
+
+### Test
+```sbt
+clean g8 test
+```
 
 Template license
 ----------------

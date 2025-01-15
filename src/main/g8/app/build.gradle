@@ -1,0 +1,69 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://projectlombok.org/edge-releases' }
+}
+
+group = 'org.bvkatwijk'
+version = 'unspecified'
+
+dependencies {
+    implementation project(":lib")
+
+    implementation libs.javalin
+    implementation libs.j2html
+
+    implementation group: 'org.webjars.npm', name: 'htmx.org', version: '1.9.12'
+    implementation group: 'org.webjars', name: 'bootstrap', version: '5.3.3'
+    implementation group: 'org.webjars.npm', name: 'bootstrap-icons', version: '1.11.3'
+    implementation group: 'org.json', name: 'json', version: '20240303'
+    implementation libs.vavr
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
+
+    testImplementation libs.junit.jupiter
+    testImplementation libs.junit.jupiter.api
+
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.12'
+    testImplementation group: 'org.slf4j', name: 'slf4j-reload4j', version: '2.0.16'
+
+    implementation 'nl.bvkatwijk:java-lens:0.3.0'
+    annotationProcessor 'nl.bvkatwijk:java-lens:0.3.0'
+    testAnnotationProcessor 'nl.bvkatwijk:java-lens:0.3.0'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(23)
+    }
+}
+
+application {
+    mainClass = 'nl.bvkatwijk.shrine.App'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+run {
+    jvmArgs = [
+            '--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED',
+            '--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED',
+            '--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED',
+            '--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED',
+            '--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED',
+            '--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED',
+            '--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED'
+    ]
+}
+
+test {
+    jvmArgs = ['--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED']
+}
