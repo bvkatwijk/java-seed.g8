@@ -3,3 +3,5 @@ plugins {
 }
 
 rootProject.name = '$name$'
+
+include('lib', 'app')

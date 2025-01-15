@@ -1,0 +1,81 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'application'
+    id 'jacoco'
+    id 'com.adarshr.test-logger' version '4.0.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    testCompile.extendsFrom compileOnly
+}
+
+group '$package$'
+version = '0.1.0'
+
+dependencies {
+    implementation project(":lib")
+
+    implementation libs.javalin
+    implementation libs.j2html
+
+    runtimeOnly group: 'org.webjars.npm', name: 'htmx.org', version: '$htmx_version$'
+    runtimeOnly group: 'org.webjars.npm', name: 'bootstrap', version: '$bootstrap_version$'
+    runtimeOnly group: 'org.webjars.npm', name: 'bootstrap-icons', version: '$bootstrap-icons_version$'
+    implementation group: 'org.json', name: 'json', version: '$json_version$'
+    implementation libs.vavr
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
+
+    testImplementation libs.junit.jupiter
+    testImplementation libs.junit.jupiter.api
+
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '$logback-classic_version$'
+    testImplementation group: 'org.slf4j', name: 'slf4j-reload4j', version: '$slf4j-reload4j_version$'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '$assertj-core_version$'
+
+    implementation libs.java.lens
+    annotationProcessor libs.java.lens
+    testAnnotationProcessor libs.java.lens
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of($java_version$)
+    }
+}
+
+application {
+    mainClass = '$package$.App'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+testlogger {
+    slowThreshold 500
+}
