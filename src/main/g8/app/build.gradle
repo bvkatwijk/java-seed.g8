@@ -27,9 +27,9 @@ dependencies {
     implementation libs.javalin
     implementation libs.j2html
 
-    implementation group: 'org.webjars.npm', name: 'htmx.org', version: '1.9.12'
-    implementation group: 'org.webjars', name: 'bootstrap', version: '5.3.3'
-    implementation group: 'org.webjars.npm', name: 'bootstrap-icons', version: '1.11.3'
+    runtimeOnly group: 'org.webjars.npm', name: 'htmx.org', version: '$htmx_version$'
+    runtimeOnly group: 'org.webjars.npm', name: 'bootstrap', version: '$bootstrap_version$'
+    runtimeOnly group: 'org.webjars.npm', name: 'bootstrap-icons', version: '$bootstrap-icons_version$'
     implementation group: 'org.json', name: 'json', version: '20240303'
     implementation libs.vavr
 
@@ -41,13 +41,13 @@ dependencies {
     testImplementation libs.junit.jupiter
     testImplementation libs.junit.jupiter.api
 
-    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.12'
-    testImplementation group: 'org.slf4j', name: 'slf4j-reload4j', version: '2.0.16'
-    testImplementation("org.assertj:assertj-core:3.26.3")
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '$logback-classic_version$'
+    testImplementation group: 'org.slf4j', name: 'slf4j-reload4j', version: '$slf4j-reload4j_version$'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '$assertj-core_version$'
 
-    implementation 'nl.bvkatwijk:java-lens:0.3.0'
-    annotationProcessor 'nl.bvkatwijk:java-lens:0.3.0'
-    testAnnotationProcessor 'nl.bvkatwijk:java-lens:0.3.0'
+    implementation libs.java.lens
+    annotationProcessor libs.java.lens
+    testAnnotationProcessor libs.java.lens
 }
 
 java {
