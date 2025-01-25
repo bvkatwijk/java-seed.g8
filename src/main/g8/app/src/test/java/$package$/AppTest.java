@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SomeClassTest {
+class AppTest {
 	@Test
-	void someMethod_returnsResult() {
+	void get_returns_correct_result() {
         JavalinTest.test(App.createServer(), (server, client) -> {
            var response = client.get("/");
             assertThat(response.code())
