@@ -1,22 +1,11 @@
 [versions]
-j2html = "$j2html_version$"
-javalin = "$javalin_version$"
 junit-jupiter = "$junit_version$"
 lombok = "$lombok_version$"
 vavr = "$vavr_version$"
-htmx = "$htmx_version$"
-bootstrap = "$bootstrap_version$"
-bootstrap-icons = "$bootstrap-icons_version$"
-logback-classic = "$logback-classic_version$"
-slf4j-reload4j = "$slf4j-reload4j_version$"
 assertj-core = "$assertj-core_version$"
-java-lens = "0.3.0"
 
 [libraries]
-javalin = { module = "io.javalin:javalin-bundle", version.ref = "javalin" }
-j2html = { module = "com.j2html:j2html", version.ref = "j2html" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 vavr = { module = "io.vavr:vavr", version.ref = "vavr" }
-java-lens = { module = "nl.bvkatwijk:java-lens", version.ref = "java-lens" }

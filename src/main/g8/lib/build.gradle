@@ -10,8 +10,19 @@ plugins {
     id 'com.adarshr.test-logger' version '4.0.0'
 }
 
-sourceCompatibility = $java_version$
-targetCompatibility = $java_version$
+java {
+    sourceCompatibility = $java_version$
+    targetCompatibility = $java_version$
+    withJavadocJar()
+    withSourcesJar()
+    toolchain {
+        languageVersion = JavaLanguageVersion.of($java_version$)
+    }
+}
+
+javadoc {
+    failOnError = false
+}
 
 group '$package$'
 description '$project_description$'
@@ -35,6 +46,7 @@ dependencies {
 
     testImplementation libs.junit.jupiter
     testImplementation libs.junit.jupiter.api
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 java {
