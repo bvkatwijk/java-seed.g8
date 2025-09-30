@@ -24,9 +24,9 @@ javadoc {
     failOnError = false
 }
 
-group '$package$'
-description '$project_description$'
-version '0.1.0'
+group = '$package$'
+description = '$project_description$'
+version = '0.1.0'
 
 configurations {
     testCompile.extendsFrom compileOnly
@@ -74,7 +74,7 @@ jacocoTestReport {
 }
 
 testlogger {
-    slowThreshold 500
+    slowThreshold = 500
 }
 
 clean { delete += "tmp" }
