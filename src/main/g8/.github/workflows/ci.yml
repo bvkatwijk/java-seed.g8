@@ -8,11 +8,9 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK
@@ -33,11 +31,11 @@ jobs:
       uses: codecov/test-results-action@v1
       with:
         token: \${{ secrets.CODECOV_TOKEN }}
+
   dependency-submission:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK
