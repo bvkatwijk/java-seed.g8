@@ -1,8 +1,8 @@
 [versions]
-junit-jupiter = "$junit_version$"
-lombok = "$lombok_version$"
-vavr = "$vavr_version$"
-assertj-core = "$assertj-core_version$"
+junit-jupiter = "5.13.4"
+lombok = "1.18.42"
+vavr = "0.10.7"
+assertj-core = "3.27.6"
 
 [libraries]
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
