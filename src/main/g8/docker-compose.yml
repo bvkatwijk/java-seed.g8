@@ -1,5 +1,3 @@
-version: "3.7"
-
 services:
   gradle:
     image: gradle:$gradle_version$-jdk$java_version$
