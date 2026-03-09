@@ -1,7 +1,5 @@
 *.class
 *.log
-
-# IDE Specific Files
 .cache*
 .classpath
 .project
@@ -10,13 +8,9 @@ target/
 /bin/
 .idea
 *.iml
-
-# Build files
 .gradle/
 build/
-
-# OS files
 .DS_Store
-
-# Sensitive files
 .env
+*.zip
+*.received.txt

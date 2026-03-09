@@ -1,7 +1,8 @@
 *.md
 Dockerfile
 docker-compose.yml
-.travis.yml
 .github/
 .idea/
 .bsp/
+*.zip
+*.received.txt

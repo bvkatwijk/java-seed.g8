@@ -13,7 +13,6 @@ sbt new bvkatwijk/java-seed.g8
 ## Included
 * Multi-module project
   * Lib
-  * App
 * Libraries
   * [Lombok](https://projectlombok.org/) (automatic latest)
   * [Vavr](https://vavr.io/) (automatic latest)
